@@ -26,16 +26,27 @@ dlib
 
 my_face_reading_app/
 │
+
 ├── static/
+
 │   └── images/
+
 │       └── uploaded/   # 업로드된 이미지가 저장될 폴더
+
 │
+
 ├── templates/
+
 │   ├── index.html      # 메인 페이지 템플릿
+
 │   ├── upload.html     # 업로드 페이지 템플릿
+
 │   └── result.html     # 결과 페이지 템플릿
+
 │
+
 ├── app.py              # Flask 애플리케이션 파일
+
 └── shape_predictor_68_face_landmarks.dat  # dlib 모델 파일
 
 
