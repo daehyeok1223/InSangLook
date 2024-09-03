@@ -50,18 +50,19 @@ my_face_reading_app/
 └── shape_predictor_68_face_landmarks.dat  # dlib 모델 파일
 
 
-4. Flask 애플리케이션 실행
+## Flask 애플리케이션 실행
 프로젝트 디렉토리로 이동한 후 다음 명령어로 애플리케이션을 실행한다:
-
-코드 복사
-python app.py
+```
+python -u "/Users/handaehyeok/face_recognition_project/my_face_reading_app/app.py"
+```
 서버가 시작되고 http://127.0.0.1:5000/에서 애플리케이션에 접근할 수 있다.
 
-5. 사용 방법
+## 사용 방법
 메인 페이지에서 "Upload" 버튼을 클릭하여 얼굴 이미지를 업로드할 수 있는 페이지로 이동한다.
 얼굴 이미지 파일을 선택하고, 학과 추천을 받을 학교를 선택한 후 "Upload" 버튼을 클릭한다.
 분석이 완료되면 사용자의 MBTI 성격 유형과 추천 학과 목록, 얼굴 랜드마크가 표시된 이미지가 결과 페이지에 표시된다.
-코드 설명
+
+## 코드 설명
 이 프로젝트의 주요 코드 흐름과 기능을 설명한다:
 
 라이브러리 및 모듈 불러오기:
