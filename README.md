@@ -1,7 +1,8 @@
 프로젝트 이름: My Face Reading App
 
 개요
-My Face Reading App은 사용자가 업로드한 얼굴 이미지를 분석하여 MBTI 성격 유형을 예측하고, 해당 성격 유형에 맞는 대학 학과를 추천해주는 웹 애플리케이션입니다. 이 애플리케이션은 OpenCV와 dlib을 사용하여 얼굴 검출 및 랜드마크 예측을 수행하며, Flask 프레임워크를 이용해 서버를 구축합니다.
+My Face Reading App은 사용자가 업로드한 얼굴 이미지를 분석하여 MBTI 성격 유형을 예측하고, 해당 성격 유형에 맞는 대학 학과를 추천해주는 웹 애플리케이션입니다. 
+이 애플리케이션은 OpenCV와 dlib을 사용하여 얼굴 검출 및 랜드마크 예측을 수행하며, Flask 프레임워크를 이용해 서버를 구축합니다.
 
 
 주요 기능
@@ -24,23 +25,30 @@ dlib
 
 코드 복사
 my_face_reading_app/
+
 │
 ├── static/
+
 │   └── images/
+
 │       └── uploaded/   # 업로드된 이미지가 저장될 폴더
 │
+
 ├── templates/
+
 │   ├── index.html      # 메인 페이지 템플릿
+
 │   ├── upload.html     # 업로드 페이지 템플릿
+
 │   └── result.html     # 결과 페이지 템플릿
 │
 ├── app.py              # Flask 애플리케이션 파일
+
 └── shape_predictor_68_face_landmarks.dat  # dlib 모델 파일
 
 4. Flask 애플리케이션 실행
 프로젝트 디렉토리로 이동한 후 다음 명령어로 애플리케이션을 실행하세요:
 
-코드 복사
 python app.py
 서버가 시작되고 http://127.0.0.1:5000/에서 애플리케이션에 접근할 수 있습니다.
 
@@ -57,8 +65,6 @@ python app.py
 프로젝트에 필요한 다양한 Python 라이브러리 및 모듈을 불러옵니다. Flask는 웹 애플리케이션을 만들기 위해 사용되고, OpenCV와 dlib는 얼굴 검출 및 랜드마크 예측에 사용됩니다.
 Flask 애플리케이션 설정:
 
-python
-코드 복사
 app = Flask(__name__, static_url_path='/static')
 app.config['UPLOAD_FOLDER'] = 'my_face_reading_app/static/images/uploaded/'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
@@ -121,8 +127,7 @@ def analyze_face(image_path, school):
 예측된 MBTI 유형에 따라 적합한 학과를 추천합니다.
 파일 업로드 처리:
 
-python
-코드 복사
+'''
 @app.route('/upload', methods=['POST'])
 def upload():
     if 'file' not in request.files or 'school' not in request.form:
@@ -145,15 +150,19 @@ def upload():
         recommended_subject = [{"name": item["name"], "url": item["url"]} for item in subjects if item["name"] in recommended_subjects]
         landmarks_image_path = landmarks_image_path.replace("my_face_reading_app/", "")
         return render_template('result.html', mbti_type=mbti_type, subjects=recommended_subject, image_path=landmarks_image_path)
+'''
 사용자가 업로드한 이미지 파일과 선택한 학교 정보를 처리합니다.
 얼굴 분석을 수행하고, 예측된 MBTI 유형과 추천 학과를 result.html 템플릿에 렌더링합니다.
 기본 페이지 및 업로드 페이지 라우트 설정:
 
 /, /upload, /result 라우트를 설정하여 각 페이지를 렌더링합니다.
-애플리케이션 실행:
 
-python
-코드 복사
+
 if __name__ == '__main__':
     app.run(debug=True)
 Flask 애플리케이션을 디버그 모드로 실행하여 개발 중에 오류와 디버그 정보를 쉽게 확인할 수 있도록 합니다.
+
+힘들었던 점
+c++을 기반으로 공부를 했는데 따온 api가 python이라는 점에서 코딩하는데 살짝 어려움이 있었다. 예를 들어, 5-6개의 학과 중 랜덤하게 학과를 추출해야할 때
+코딩에 어려움이 있어서 구글링의 힘을 빌렸다,,
+프론트 앤드 개발
