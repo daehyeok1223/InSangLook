@@ -75,10 +75,11 @@ Flask 애플리케이션 설정:
 app = Flask(__name__, static_url_path='/static')
 app.config['UPLOAD_FOLDER'] = 'my_face_reading_app/static/images/uploaded/'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
+```
 Flask 애플리케이션을 초기화하고 정적 파일 경로와 업로드 폴더, 허용 파일 확장자를 설정한다.
 얼굴 검출기 및 랜드마크 예측기 초기화:
-makefile
-코드 복사
+
+```
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 ```
